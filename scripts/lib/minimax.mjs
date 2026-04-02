@@ -139,8 +139,9 @@ export async function runMiniMaxPrompt(prompt, options = {}) {
       };
     }
 
-    // Extract text from response
-    const text = data?.choices?.[0]?.message?.content ?? "(No text response)";
+    // Extract text from response, strip reasoning <think> tags
+    let text = data?.choices?.[0]?.message?.content ?? "(No text response)";
+    text = text.replace(/<think>[\s\S]*?<\/think>\s*/g, "").trim();
 
     return {
       text,
