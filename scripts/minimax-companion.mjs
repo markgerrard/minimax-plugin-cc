@@ -413,10 +413,13 @@ async function cmdCode(flags, positional) {
   const model = normalizeRequestedModel(flags.model);
   console.error(`[minimax:code] Starting Pi with MiniMax (${model})...`);
 
+  const workDir = resolveWorkspaceRoot(process.cwd());
+  console.error(`[minimax:code] Working directory: ${workDir}`);
+
   const pi = createPiClient({
     provider: "minimax",
     model: model,
-    cwd: process.cwd(),
+    cwd: workDir,
   });
 
   try {
