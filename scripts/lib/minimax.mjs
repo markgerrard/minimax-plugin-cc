@@ -9,16 +9,14 @@ import { fileURLToPath } from "node:url";
 
 const API_BASE = "https://api.minimax.io/v1";
 const DEFAULT_TIMEOUT_MS = 300_000; // 2 minutes
-const DEFAULT_MODEL = "MiniMax-M1";
+const DEFAULT_MODEL = "MiniMax-M2.7";
 
 const MODEL_ALIASES = new Map([
-  ["fast", "MiniMax-Text-01"],
-  ["text", "MiniMax-Text-01"],
-  ["reasoning", "MiniMax-M1"],
-  ["m1", "MiniMax-M1"],
+  ["fast", "MiniMax-M2"],
   ["m2", "MiniMax-M2"],
-  ["pro", "MiniMax-M2"],
-  ["flagship", "MiniMax-M2"],
+  ["m2.5", "MiniMax-M2.5"],
+  ["m2.7", "MiniMax-M2.7"],
+  ["pro", "MiniMax-M2.7"],
 ]);
 
 /**
@@ -55,11 +53,11 @@ export async function getMiniMaxAvailability() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: DEFAULT_MODEL,
-        messages: [{ role: "user", content: "ping" }],
+        model: "MiniMax-M2",
+        messages: [{ role: "user", content: "hi" }],
         max_tokens: 1,
       }),
-      signal: AbortSignal.timeout(15_000),
+      signal: AbortSignal.timeout(30_000),
     });
 
     if (testResponse.ok || testResponse.status === 200) {
