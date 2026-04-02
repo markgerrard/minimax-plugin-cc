@@ -9,14 +9,14 @@ import { fileURLToPath } from "node:url";
 
 const API_BASE = "https://api.minimax.io/v1";
 const DEFAULT_TIMEOUT_MS = 300_000; // 2 minutes
-const DEFAULT_MODEL = "MiniMax-M2.7";
+const DEFAULT_MODEL = "MiniMax-M2.7-highspeed";
 
 const MODEL_ALIASES = new Map([
-  ["fast", "MiniMax-M2"],
-  ["m2", "MiniMax-M2"],
-  ["m2.5", "MiniMax-M2.5"],
-  ["m2.7", "MiniMax-M2.7"],
-  ["pro", "MiniMax-M2.7"],
+  ["fast", "MiniMax-M2-highspeed"],
+  ["m2", "MiniMax-M2-highspeed"],
+  ["m2.5", "MiniMax-M2.5-highspeed"],
+  ["m2.7", "MiniMax-M2.7-highspeed"],
+  ["pro", "MiniMax-M2.7-highspeed"],
 ]);
 
 /**
