@@ -234,7 +234,7 @@ async function buildReviewPrompt(flags, positional) {
 async function runCommand(kind, flags, positional, promptBuilder) {
   const { prompt, systemPrompt, title } = await promptBuilder(flags, positional);
 
-  const isBackground = flags.background === true;
+  // task and review auto-background unless --wait is explicitly passed\n  const autoBackground = (kind === "task" || kind === "review") && flags.wait !== true;\n  const isBackground = flags.background === true || autoBackground;
 
   if (isBackground) {
     const jobId = generateJobId(kind.slice(0, 3));
